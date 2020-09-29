@@ -17,7 +17,7 @@ void KafkaConsumerTest::configure(RdKafka::Conf *configuration)
     }
 
     if (configuration->set("group.id",
-                           m_groupId, 
+                           m_groupId,
                            ErrorString) !=
         RdKafka::Conf::CONF_OK)
     {
@@ -68,9 +68,7 @@ void KafkaConsumerTest::create(RdKafka::Conf *configuration)
         exit(1);
     }
 
-    std::vector<std::string> topics = {"testTopic"};
-
-    RdKafka::ErrorCode status = messageConsumer->subscribe(topics);
+    RdKafka::ErrorCode status = messageConsumer->subscribe(m_Topics);
 
     if (status != RdKafka::ErrorCode::ERR_NO_ERROR)
     {
