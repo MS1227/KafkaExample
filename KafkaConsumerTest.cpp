@@ -2,9 +2,10 @@
 #include <iostream>
 #include <string>
 #include <chrono>
-KafkaConsumerTest::KafkaConsumerTest(std::string name, std::string topic) :
+KafkaConsumerTest::KafkaConsumerTest(std::string name, std::string topic, std::string groupId) :
                    KafkaClientBase(name, topic)
 {
+    m_groupId = groupId;
 }
 void KafkaConsumerTest::configure(RdKafka::Conf *configuration)
 {
@@ -16,7 +17,7 @@ void KafkaConsumerTest::configure(RdKafka::Conf *configuration)
     }
 
     if (configuration->set("group.id",
-                           "testGroup",
+                           m_groupId, 
                            ErrorString) !=
         RdKafka::Conf::CONF_OK)
     {

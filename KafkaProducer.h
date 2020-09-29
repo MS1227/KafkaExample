@@ -13,8 +13,6 @@ class KafkaProducer : public KafkaClientBase
         virtual void create(RdKafka::Conf* configuration);
         void producer();
 
-        std::string ErrorString;
-        RdKafka::Conf *conf = NULL;
         RdKafka::Producer *messageProducer = NULL;
         DeliveryCallbackHandler cbHandler;
 

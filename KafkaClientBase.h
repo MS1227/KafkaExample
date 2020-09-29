@@ -11,11 +11,14 @@ public:
     virtual std::thread startThread(RdKafka::Conf *configuration) = 0;
 
 protected:
-    std::string m_Name;
-    std::vector<std::string> m_Topics;
-    std::string getName();
-    std::string getTopic();
     virtual void configure(RdKafka::Conf *configuration) = 0;
     virtual void create(RdKafka::Conf *configuration) = 0;
+    std::string getName();
+    std::string getTopic();
+
+    std::string m_Name;
+    std::vector<std::string> m_Topics;
+    RdKafka::Conf *conf = NULL;
+    std::string ErrorString;
 
 };

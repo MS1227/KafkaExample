@@ -5,7 +5,7 @@
 class KafkaConsumerTest : public KafkaClientBase
 {
     public:
-        KafkaConsumerTest(std::string name, std::string topic);
+        KafkaConsumerTest(std::string name, std::string topic, std::string groupId);
         virtual std::thread startThread(RdKafka::Conf* configuration);
     private:
         virtual void configure(RdKafka::Conf* configuration);
@@ -13,10 +13,7 @@ class KafkaConsumerTest : public KafkaClientBase
         void consumer();
         void printMessage(RdKafka::Message* message);
 
-        std::string ErrorString;
-        RdKafka::Conf *conf = NULL;
+        std::string m_groupId;
         RdKafka::KafkaConsumer *messageConsumer = NULL;
-        DeliveryCallbackHandler cbHandler;
-
 
 };
