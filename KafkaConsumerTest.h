@@ -14,6 +14,7 @@ class KafkaConsumerTest : public KafkaClientBase
         void printMessage(RdKafka::Message* message);
 
         std::string m_groupId;
+        std::thread m_Thread;
         RdKafka::KafkaConsumer *messageConsumer = NULL;
 
 };
